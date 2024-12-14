@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    user: root  # Run as root to avoid permission issues
+    volumes:
+      - ./src:/app/src:Z
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgres://user:password@postgres:5432/mydatabase
+
+  postgres:
+    image: postgres:latest  # Using the official PostgreSQL image
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+    driver: local
