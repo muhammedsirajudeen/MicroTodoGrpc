@@ -20,7 +20,7 @@ const items = [
   },
   {
     title: "Authentication Microservices",
-    url: "/auth",
+    url: "/signup",
     icon: LogInIcon,
   },
 
