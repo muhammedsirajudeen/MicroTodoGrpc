@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react"
 import { Trash } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Button } from "~/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "~/components/ui/card"
 import { Badge } from "~/components/ui/badge"
@@ -25,10 +25,6 @@ export async function loader(){
 export default function Todo(){
     const {toast}=useToast()
     const TodolistData=useLoaderData() as TodoList[]
-    useEffect(() => {
-        const root = window.document.documentElement;
-        root.classList.add("dark");
-    }, []);
     const [TodoLists,setTodolists]=useState(TodolistData??[])
     const [todolisthere,setTodolist]=useState<TodoList>()
     async function deleteHandler(id:number){

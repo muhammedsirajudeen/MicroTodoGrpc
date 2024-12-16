@@ -10,8 +10,13 @@ import "./tailwind.css";
 import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar"
 import { AppSidebar } from "./components/AppsideBar";
 import { Toaster } from "~/components/ui/toaster"
+import { useEffect } from "react";
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.add("dark");
+}, []);
   return (
     <html lang="en">
       <head>
